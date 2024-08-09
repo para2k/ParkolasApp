@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ParkolasBeadandoPappMate.Pages.UjParkolasPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Parkolás">
+    <Grid
+        Padding="10"
+        BackgroundColor="{StaticResource TertiaryColor}"
+        RowDefinitions="*,2*,*,*,*">
+        <StackLayout
+            x:Name="UjRendszamStack"
+            Grid.Row="0"
+            Padding="20"
+            Spacing="15">
+            <Label
+                Margin="0,10,0,20"
+                FontSize="24"
+                HorizontalOptions="CenterAndExpand"
+                Text="Aktuális parkolás" />
+            <Button
+                x:Name="RendszamHozzaadasGomb"
+                Clicked="RendszamHozzaadasGomb_Clicked"
+                Text="Rendszám felvétele" />
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Padding="10">
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Text="Rögzített rendszámok"
+                TextColor="Black" />
+            <Label
+                FontAttributes="Italic"
+                FontSize="14"
+                Text="Kérem válasszon ki egy rendszámot a parkolás elkezdéséhez!"
+                TextColor="Black" />
+
+            <CollectionView
+                x:Name="RendszamokCV"
+                BackgroundColor="{StaticResource SecondaryColor}"
+                SelectionChanged="RendszamokCV_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="Center"
+                                Text="{Binding}"
+                                TextColor="{StaticResource PrimaryColor}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+        <Button
+            x:Name="ParkolasGomb"
+            Grid.Row="2"
+            Clicked="ParkolasGomb_Clicked"
+            CornerRadius="15"
+            HorizontalOptions="CenterAndExpand"
+            Text="Parkolás indítása"
+            VerticalOptions="StartAndExpand" />
+
+        <Grid
+            BackgroundColor="{StaticResource SecondaryColor}"
+            x:Name="FutoParkolasGrid"
+            Grid.Row="3"
+            ColumnDefinitions="*,*">
+            <StackLayout
+                Grid.Column="0"
+                HorizontalOptions="StartAndExpand"
+                Orientation="Horizontal">
+                <Label
+                    x:Name="AktualisParkolasAdatokLabel"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource PrimaryColor}"
+                    VerticalOptions="Center" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout
+                Grid.Column="1"
+                HorizontalOptions="StartAndExpand"
+                Orientation="Horizontal">
+                <Button
+                    Padding="10"
+                    x:Name="ParkolasLeallitasGomb"
+                    Clicked="ParkolasLeallitasGomb_Clicked"
+                    CornerRadius="15"
+                    Text="Parkolás leállítása"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </Grid>
+        <Button
+            Grid.Row="4"
+            Margin="0,10,0,10"
+            Padding="10"
+            Clicked="Button_Clicked"
+            CornerRadius="15"
+            HorizontalOptions="Center"
+            Text="Vissza a főoldalra"
+            VerticalOptions="Center" />
+    </Grid>
+</ContentPage>
